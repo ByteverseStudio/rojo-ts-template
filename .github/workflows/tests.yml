@@ -1,0 +1,65 @@
+name: Code-Quality
+
+on: [push, pull_request]
+
+jobs:
+  code-test:
+    name: Code Test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: Roblox/setup-foreman@v1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Report tool versions
+      run: selene --version
+
+    - name: Run Test
+      run: selene src
+
+  compiling-test:
+    name: Compiling Test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with: 
+        lfs: 'true'
+        submodules: 'recursive'
+
+    - uses: Roblox/setup-foreman@v1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Report tool versions
+      run: rojo --version
+
+    - name: Install dependencies
+      run: wally install
+
+    - name: Run Test
+      run: rojo build --output build.rbxl
+
+    - uses: actions/upload-artifact@v3
+      with:
+        path: build.rbxl
+        if-no-files-found: error
+
+  stylua:
+    name: Lua Styling
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: Roblox/setup-foreman@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Run stylua
+        run: stylua src/
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Restyle Luau
+          commit_user_name: Stylua

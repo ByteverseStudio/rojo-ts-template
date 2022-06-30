@@ -1,0 +1,56 @@
+{
+  "name": "rojo-template",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "$className": "ReplicatedStorage",
+      "Modules": {
+        "$path": "modules"
+      },
+      "Packages": {
+        "$path": {
+          "optional": "Packages"
+        }
+      },
+      "$path": "src/shared"
+    },
+    "ServerScriptService": {
+      "$className": "ServerScriptService",
+      "Server": {
+        "$path": "src/server"
+      },
+      "ServerPackages": {
+        "$className": "ServerPackages",
+        "$path": {
+          "optional": "ServerPackages"
+        }
+      }
+    },
+    "StarterPlayer": {
+      "$className": "StarterPlayer",
+      "StarterPlayerScripts": {
+        "$className": "StarterPlayerScripts",
+        "Client": {
+          "$path": "src/client"
+        }
+      }
+    },
+    "TestService": {
+      "$className": "TestService",
+      "DevPackages": {
+        "$className": "DevPackages",
+        "$path": {
+          "optional": " DevPackages"
+        }
+      },
+      "$path": "src/test"
+    },
+    "Workspace": {
+      "$className": "Workspace",
+      "$properties": {
+        "FilteringEnabled": true
+      },
+      "$path": "workspace"
+    }
+  }
+}

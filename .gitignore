@@ -1,0 +1,18 @@
+# Project place file
+/project.rbxlx
+/build.rbxlx
+/build.rbxm
+.remodel/place.rbxl
+
+# Roblox Studio lock files
+/*.rbxlx.lock
+/*.rbxl.lock
+
+
+# Wally Files
+/DevPackages
+/ServerPackages
+/Packages
+
+# Github Workflow
+.foreman-install/
