@@ -4,46 +4,30 @@
     "$className": "DataModel",
     "ReplicatedStorage": {
       "$className": "ReplicatedStorage",
-      "Modules": {
-        "$path": "modules"
-      },
-      "Packages": {
-        "$path": {
-          "optional": "Packages"
+      "rbxts_include": {
+        "$path": "include",
+        "node_modules": {
+          "$path": "node_modules/@rbxts"
         }
       },
-      "$path": "src/shared"
+      "TS": {
+				"$path": "out/shared"
+    }
     },
     "ServerScriptService": {
       "$className": "ServerScriptService",
-      "Server": {
-        "$path": "src/server"
-      },
-      "ServerPackages": {
-        "$className": "ServerPackages",
-        "$path": {
-          "optional": "ServerPackages"
-        }
+      "TS": {
+        "$path": "out/server"
       }
     },
     "StarterPlayer": {
       "$className": "StarterPlayer",
       "StarterPlayerScripts": {
         "$className": "StarterPlayerScripts",
-        "Client": {
-          "$path": "src/client"
+        "TS": {
+          "$path": "out/client"
         }
       }
-    },
-    "TestService": {
-      "$className": "TestService",
-      "DevPackages": {
-        "$className": "DevPackages",
-        "$path": {
-          "optional": " DevPackages"
-        }
-      },
-      "$path": "src/test"
     },
     "Workspace": {
       "$className": "Workspace",
@@ -51,6 +35,18 @@
         "FilteringEnabled": true
       },
       "$path": "workspace"
+    },
+    "HttpService": {
+      "$className": "HttpService",
+      "$properties": {
+        "HttpEnabled": true
+      }
+    },
+    "SoundService": {
+      "$className": "SoundService",
+      "$properties": {
+        "RespectFilteringEnabled": true
+      }
     }
   }
 }

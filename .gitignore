@@ -16,3 +16,8 @@
 
 # Github Workflow
 .foreman-install/
+
+# Rbxl TS
+/node_modules
+/out
+*.tsbuildinfo

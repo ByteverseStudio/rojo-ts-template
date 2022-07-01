@@ -1,8 +1,7 @@
 {
-	"recommendations":
-	[
-		"nightrains.robloxlsp",
+	"recommendations": [
 		"evaera.vscode-rojo",
-        "kampfkarren.selene-vscode"
+		"roblox-ts.vscode-roblox-ts",
+		"dbaeumer.vscode-eslint"
 	]
 }
