@@ -1,6 +1,12 @@
+#Roblox TS
+/node_modules
+/out
+/include
+*.tsbuildinfo
+
 # Project place file
-/project.rbxlx
-/build.rbxlx
+/*.rbxlx
+/*.rbxl
 /build.rbxm
 .remodel/place.rbxl
 
@@ -8,16 +14,5 @@
 /*.rbxlx.lock
 /*.rbxl.lock
 
-
-# Wally Files
-/DevPackages
-/ServerPackages
-/Packages
-
 # Github Workflow
 .foreman-install/
-
-# Rbxl TS
-/node_modules
-/out
-*.tsbuildinfo

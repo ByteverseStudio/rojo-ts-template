@@ -1,4 +1,4 @@
-name: Publish-Project
+name: Publish to Roblox
 
 on: release
 
@@ -8,40 +8,50 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-      with: 
-        lfs: 'true'
-        submodules: 'recursive'
+      - uses: actions/checkout@v3
+        with:
+          submodules: "recursive"
 
-    - uses: Roblox/setup-foreman@v1
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+          check-latest: true
 
-    - name: Report tool versions
-      run: rojo --version
+      - name: Install dependencies
+        run: yarn
 
-    - name: Install dependencies
-      run: wally install
+      - uses: Roblox/setup-foreman@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Run Test
-      run: rojo build --output build.rbxl
+      - name: Report Rojo tool versions
+        run: rojo --version
 
-    - uses: actions/upload-artifact@v3
-      with:
-        path: build.rbxl
-        if-no-files-found: error
+      - name: Report Roblox-TS version
+        run: yarn rbxtsc --version
 
-    - name: Upload Roblox File to release
-      uses: svenstaro/upload-release-action@v2
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: build.rbxl
-        asset_name: build.rbxl
-        tag: ${{ github.ref }}
-        overwrite: true
+      - name: Build Roblox-TS
+        run: yarn run build
 
-    - name: Deploy to Roblox
-      run: rojo upload --cookie "$ROBLOSECURITY" --asset_id $ASSETID
-      env:
-        ROBLOSECURITY: ${{ secrets.ROBLOSECURITY }}
-        ASSETID: 9006663690
+      - name: Build Roblox File
+        run: yarn run build-rojo
+      
+      - uses: actions/upload-artifact@v3
+        with:
+          path: build.rbxl
+          if-no-files-found: error
+
+      - name: Upload Roblox File to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: build.rbxl
+          asset_name: build.rbxl
+          tag: ${{ github.ref }}
+          overwrite: true
+
+      - name: Deploy to Roblox
+        run: rojo upload --cookie "$ROBLOSECURITY" --asset_id $ASSETID
+        env:
+          ROBLOSECURITY: ${{ secrets.ROBLOSECURITY }}
+          ASSETID: 123456789

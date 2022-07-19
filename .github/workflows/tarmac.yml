@@ -4,7 +4,7 @@ on: workflow_dispatch
 
 jobs:
   sync:
-    name: Sync Tarmac to Roblox
+    name: Sync Assets Images with Tarmac to Roblox
     runs-on: ubuntu-latest
 
     steps:

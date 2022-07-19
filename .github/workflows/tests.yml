@@ -1,65 +1,62 @@
-name: Code-Quality
+name: Code Quality
 
-on: [push, pull_request]
+on:
+  pull_request:
+    branches: [main]
 
 jobs:
-  code-test:
-    name: Code Test
+  eslint:
+    name: ESLint
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - uses: Roblox/setup-foreman@v1
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          check-latest: true
+          cache: 'yarn'
 
-    - name: Report tool versions
-      run: selene --version
+      - name: Install dependencies
+        run: yarn
 
-    - name: Run Test
-      run: selene src
+      - name: Run ESLint
+        run: yarn run eslinter
 
   compiling-test:
     name: Compiling Test
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-      with: 
-        lfs: 'true'
-        submodules: 'recursive'
-
-    - uses: Roblox/setup-foreman@v1
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Report tool versions
-      run: rojo --version
-
-    - name: Install dependencies
-      run: wally install
-
-    - name: Run Test
-      run: rojo build --output build.rbxl
-
-    - uses: actions/upload-artifact@v3
-      with:
-        path: build.rbxl
-        if-no-files-found: error
-
-  stylua:
-    name: Lua Styling
-    runs-on: ubuntu-latest
-    steps:
       - uses: actions/checkout@v3
+        with:
+          submodules: "recursive"
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+          check-latest: true
+
+      - name: Install dependencies
+        run: yarn
 
       - uses: Roblox/setup-foreman@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      
-      - name: Run stylua
-        run: stylua src/
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Report Rojo tool versions
+        run: rojo --version
+
+      - name: Report Roblox-TS version
+        run: yarn rbxtsc --version
+
+      - name: Build Roblox-TS
+        run: yarn run build
+
+      - name: Build Roblox File
+        run: yarn run build-rojo
+
+      - uses: actions/upload-artifact@v3
+        if: ${{ !env.ACT }}
         with:
-          commit_message: Restyle Luau
-          commit_user_name: Stylua
+          path: build.rbxl
+          if-no-files-found: error
