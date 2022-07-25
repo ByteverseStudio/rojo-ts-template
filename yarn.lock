@@ -57,10 +57,10 @@
   resolved "https://registry.yarnpkg.com/@rbxts/compiler-types/-/compiler-types-1.3.3-types.1.tgz#94710f75af8676bb26a9d11ef645f0a4349c01e9"
   integrity sha512-iWeioe5WziBTnY+FIT7aQ5bimlw81PYZ5d9WO0h1kX3joEigXPQpn2yHGRxzrqIssqQr47Y6fwknklaaQ6IPMQ==
 
-"@rbxts/types@^1.0.629":
-  version "1.0.629"
-  resolved "https://registry.yarnpkg.com/@rbxts/types/-/types-1.0.629.tgz#9141200c0f3633e0eacb56fe16f8d132a5b77ab9"
-  integrity sha512-RT3HgTIuSr+0KZKwpuIuhMYQThUdx5Gl0/YXJvftO5yibldROgm9vHkuXZAeLA88eLAn4iPXWnhDRbnGzJ3qOg==
+"@rbxts/types@^1.0.631":
+  version "1.0.631"
+  resolved "https://registry.yarnpkg.com/@rbxts/types/-/types-1.0.631.tgz#446d8491a38160339d813f4b2c6385c8a6b6ca7b"
+  integrity sha512-aX9ijeCg3PD8ko2HxIy0/GSQzRs2UV6h7iGkUBNfq1Yy6VUcU8z718UOF78GbCkUv6OVwcYQ34RN45JMeBe6nA==
 
 "@roblox-ts/luau-ast@^1.0.1":
   version "1.0.2"
