@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@rbxts/compiler-types": "^1.3.3-types.1",
-    "@rbxts/types": "^1.0.632",
+    "@rbxts/types": "^1.0.638",
     "@typescript-eslint/eslint-plugin": "^5.32.0",
     "eslint": "^8.21.0",
     "@typescript-eslint/parser": "^5.32.0",
